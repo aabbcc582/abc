@@ -1,10 +1,15 @@
-name: Ubuntu
+name: Ubuntu2021
 on:
-  watch:
-    types: started
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
 jobs:
   Ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-20.04
     steps:
     - name: 安装依赖包
       run: |
@@ -18,3 +23,4 @@ jobs:
         ./scripts/feeds install -a
     - name: SSH connection to Actions
       uses: P3TERX/debugger-action@master
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
