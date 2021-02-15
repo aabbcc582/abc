@@ -1,4 +1,4 @@
-name: Build OpenWrt Actions
+name: DIY官方openwrt
 on:
   repository_dispatch:
   workflow_dispatch:
