@@ -14,8 +14,8 @@ jobs:
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-    - name: SSH connection to Actions
-      uses: P3TERX/debugger-action@master
+    - name: SSH远程连接（若打开了此功能,在此转圈2分钟还展开不了,请看《SSH连接教程》）
+      uses: 281677160/debugger-action@master
     - name: 下载dl库
       run: |
         cd openwrt && make download -j8
