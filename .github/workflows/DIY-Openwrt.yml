@@ -1,4 +1,4 @@
-name: Ubuntu2021
+name: DIY全新官方openwrt
 on:
   repository_dispatch:
   workflow_dispatch:
