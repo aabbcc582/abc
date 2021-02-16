@@ -1,4 +1,4 @@
-name: DIY全新官方openwrt
+name: lede全新官方openwrt(自用)
 on:
   repository_dispatch:
   workflow_dispatch:
