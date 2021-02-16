@@ -15,10 +15,13 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint
-    - name: 拉取openwrt源码
+    - name: 拉取lede-openwrt源码
       run: |
-        git clone https://github.com/openwrt/openwrt
+        git clone https://github.com/coolsnowwolf/lede
         cd openwrt
+        sed -i '$a src-git lienol https://github.com/MrH723/openwrt-packages' feeds.conf.default
+        sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+        sed -i "s/OpenWrt /This firmware was compiled by ChenZhilong on $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: SSH connection to Actions
