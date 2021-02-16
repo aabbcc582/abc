@@ -1,4 +1,4 @@
-name: lede全新官方openwrt(自用)
+name: 全新官方openwrt
 on:
   repository_dispatch:
   workflow_dispatch:
@@ -7,9 +7,6 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-env:
-  DIY_P1_SH: diy-part1.sh
-
 
 jobs:
   Ubuntu:
@@ -21,13 +18,10 @@ jobs:
         sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint
     - name: 拉取lede-openwrt源码
       run: |
-        git clone https://github.com/coolsnowwolf/lede
-        chmod +x $DIY_P1_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P1_SH
+        git clone https://github.com/openwrt/openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-    - name: SSH connection to Actions
+    - name: SSH 连接
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
     - name: 下载dl库
