@@ -7,6 +7,10 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+env:
+  DIY_P1_SH: diy-part1.sh
+
+
 jobs:
   Ubuntu:
     runs-on: Ubuntu-20.04
@@ -18,13 +22,9 @@ jobs:
     - name: 拉取lede-openwrt源码
       run: |
         git clone https://github.com/coolsnowwolf/lede
+        chmod +x $DIY_P1_SH
         cd openwrt
-        chmod + *
-        sed -i '$a src-git lienol https://github.com/MrH723/openwrt-packages' feeds.conf.default
-        sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
-        sed -i "s/OpenWrt /This firmware was compiled by ChenZhilong on $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
-        wget https://github.com/aabbcc582/abc/raw/main/.config
-        chmod + *
+        $GITHUB_WORKSPACE/$DIY_P1_SH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: SSH connection to Actions
