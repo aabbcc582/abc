@@ -19,6 +19,7 @@ jobs:
     - name: 拉取lede-openwrt源码
       run: |
         git clone https://github.com/coolsnowwolf/lede
+        cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
     - name: SSH 连接
