@@ -1,2 +1,2 @@
 Hello World  
-![image-20210307214040751](C:\Users\book\AppData\Roaming\Typora\typora-user-images\image-20210307214040751.png)
+![](https://typora-1300671906.cos.ap-nanjing.myqcloud.com/img/a.png)
