@@ -4,7 +4,7 @@
 <img src="https://typora-1300671906.cos.ap-nanjing.myqcloud.com/img/PicsArt_11-15-01.01.02.png"/>
 </div>
 
-![]https://typora-1300671906.cos.ap-nanjing.myqcloud.com/img/PicsArt_11-15-01.01.02.png#pic_center = 100x)
-
-
+<div align=center>
+![Hello World](https://typora-1300671906.cos.ap-nanjing.myqcloud.com/img/PicsArt_11-15-01.01.02.png)
+</div>
 
